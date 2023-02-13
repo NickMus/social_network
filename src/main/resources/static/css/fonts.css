@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Sprite;
+    src: url('../fonts/SpriteGraffiti-Regular.ttf') format("truetype");
+}
+@font-face {
+    font-family: Sprite Shadow;
+    src: url("../fonts/SpriteGraffiti-Shadow.ttf") format("truetype");
+}

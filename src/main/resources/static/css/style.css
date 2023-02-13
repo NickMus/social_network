@@ -1,0 +1,51 @@
+body {
+        background-color: #B3E5FC;
+    border-radius: 10px;
+    max-width: 75%;
+    margin: auto;
+    font-family: Sprite;
+    font-size: 24px;
+}
+.card {
+    width: 300px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.stats {
+    background: #ffffff !important;
+    color: #000 !important;
+}
+.articles {
+    font-size: 10px;
+    color: #a1aab9;
+}
+.number1 {
+    font-weight: 500;
+}
+.followers {
+    font-size: 10px;
+    color: #a1aab9;
+}
+.number2 {
+    font-weight: 500;
+}
+.rating {
+    font-size: 10px;
+    color: #a1aab9;
+}
+.number3 {
+    font-weight: 500;
+}
+.site-header {
+    font-family: Sprite Shadow;
+    font-size: 100px;
+    color:  #000099;
+    text-shadow: 2px 2px #000041;
+}
+.card-title {
+    color: darkcyan;
+}
+.card-text-break {
+    color: #6c6968;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="form">
+    <form th:action="@{/api/add-message}" th:object="${message}" method = "post">
+        <h2>Войти</h2>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="twit" placeholder="text" required>
+        </div>
+        <div class="input-box">
+            <input type="submit" name="sign-in" value="Войти">
+        </div>
+        <a th:href="@{/api/main}" class="register-btn">post</a>
+    </form>
+</div>
+</body>
+</html>

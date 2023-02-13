@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Подслушано в школе</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" th:href="@{/images/favicon.ico}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/css/fonts.css" th:href="@{/css/fonts.css}">
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-around py-3 mb-4 border-bottom">
+            <p class="site-header">Подслушано в школе</p>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a th:href="@{/api/test}" class="nav-link active" aria-current="page">Главная</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Помощь</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">О сайте</a></li>
+        </ul>
+    </header>
+    <!--    <div class="card" style="width: 20rem;">-->
+</div>
+<div class="container mt-5 d-flex justify-content-around">
+    <form th:action="@{/api/test}" th:object="${message}" method="post">
+        <label>
+<textarea class="rounded" style="width: 400px; height: 115px; resize: none" name="twit" maxlength="255"
+          placeholder="Введите текст"></textarea>
+        </label>
+        <br>
+        <input type="submit" class="btn btn-primary btn-lg" style="margin-top: 10px">
+    </form>
+    <div class="card p-3">
+        <div class="d-flex align-items-center">
+            <div class="image">
+                <img th:src="${client.avatar}"
+                     class="rounded-circle" width="150">
+            </div>
+            <div class="ml-3 w-100">
+                <h4 class="text-center" style="color: #6c6968" th:text="${client.name}"></h4>
+                <h4 class="text-center" style="color: #6c6968" th:text="${client.secondName}"></h4>
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-evenly rounded text-white stats">
+                    <div class="d-flex flex-column">
+                        <span class="articles" style="font-size: 16px">Записи</span>
+                        <span class="number1">-</span>
+                    </div>
+                    <!--                    <div class="d-flex flex-column">-->
+                    <!--                        <span class="followers">Followers</span>-->
+                    <!--                        <span class="number2">980</span>-->
+                    <!--                    </div>-->
+                    <div class="d-flex flex-column">
+                        <span class="rating" style="font-size: 16px">Лайки</span>
+                        <span class="number3">-</span>
+                    </div>
+                </div>
+            </div>
+            <!--                <div class="button mt-2 d-flex flex-row align-items-center">-->
+            <!--                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>-->
+            <!--                    <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>-->
+            <!--                </div>-->
+        </div>
+    </div>
+</div>
+</div>
+<div class="card-columns mt-5">
+    <tr th:each="message : ${messages}">
+        <div class="row align-items-center">
+            <div class="card mt-3" style="width: 100%">
+                <div class="row g-0 mt-2">
+                    <div class="col-md-4">
+                        <img th:src="${message.client.avatar}" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${message.client.name} + '      сказал(а)       ' + ${message.date}
+                             + '    в   ' + ${message.time}"></h5>
+                            <p class="card-text-break" th:text="${message.twit}"></p>
+                            <!--                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tr>
+</div>
+<footer class="text-center mt-4" style="background-color: #B3E5FC">
+    © 2023 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+</body>
+</html>

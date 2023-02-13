@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th> twit </th>
+    <th> client </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${messages.empty}">
+    <td colspan="2"> No Books Available </td>
+  </tr>
+  <tr th:each="message : ${messages}">
+    <td><span th:text="${message.twit}"> Title </span></td>
+    <td><span th:text="${message.client.name}"> Author </span></td>
+<!--    <td><span th:text="${message.client.email}"> Author </span></td>-->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
