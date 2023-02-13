@@ -5,6 +5,7 @@ import com.example.social_network.entities.Message;
 import com.example.social_network.repository.ClientRepository;
 import com.example.social_network.services.ClientService;
 import com.example.social_network.services.MessageService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -60,9 +61,13 @@ public class MessageController {
 //    }
 
     @PostMapping("/test")
-    public String newMessage(@ModelAttribute("message") Message message,OAuth2AuthenticationToken authenticationToken) {
+    public String newMessage(@ModelAttribute("message") Message message, OAuth2AuthenticationToken authenticationToken,
+                             HttpServletRequest request) {
         message.setClient(clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email")));
         if (!message.getTwit().isEmpty()) {
+            if (request.getParameter("anonymous")!=null) {
+                message.setClient(clientRepository.findClientByEmail("anonymous"));
+            }
             messageService.addMessage(message);
         }
         return "redirect:/api/test";
