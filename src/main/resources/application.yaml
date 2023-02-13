@@ -1,0 +1,39 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /social-network
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/network
+    username: admin
+    password: admin
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 407572578954-s7nfs39linrfbf1vg4ug8fb7bk7meq41.apps.googleusercontent.com
+            client-secret: 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
+
+  jpa:
+   hibernate:
+    ddl-auto: update
+   show-sql: true
+   properties:
+     hibernate.format_sql: true
+   database: postgresql
+   database-platform: org.hibernate.dialect.PostgreSQLDialect
+   open-in-view: false
+   generate-ddl: false
+
+  flyway:
+    locations: classpath:db/migration
+    url: jdbc:postgresql://localhost:5432/network
+    user: admin
+    password: admin
+#    schemas: social-network
+#    baseline-on-migrate: true
+    clean-disabled: false
