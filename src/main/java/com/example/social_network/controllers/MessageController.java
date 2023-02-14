@@ -45,10 +45,13 @@ public class MessageController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.isAuthenticated()) {
             model.addAttribute("client",
-                    clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email")));
+                    clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email"))); }
+        else {
+            clientService.createNewOAuthClient(authenticationToken);
+        }
             model.addAttribute("messages", messageService.getMessages());
             model.addAttribute("message", new Message());
-        }
+
         return "main";
     }
 
