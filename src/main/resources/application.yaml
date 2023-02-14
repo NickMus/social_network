@@ -1,8 +1,3 @@
-server:
-  port: 8090
-  servlet:
-    context-path: /social-network
-
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
