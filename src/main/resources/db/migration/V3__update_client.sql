@@ -11,7 +11,7 @@ create table if not exists client
     "id"          bigserial primary key,
     "name"        char(50)  not null,
     "second_name" char(50)  not null,
-    "avatar" char(50)  not null,
+    "avatar" char(250)  not null,
     "email" char(50)  not null,
     "role" char(50)  not null,
     "message_id"  bigint    null,
