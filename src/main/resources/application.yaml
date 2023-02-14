@@ -32,8 +32,8 @@ spring:
   flyway:
     locations: classpath:db/migration
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    user: admin
-    password: admin
+    user: ${DB_USER_NAME}
+    password: ${DB_USER_PASSWORD}
 #    schemas: social-network
 #    baseline-on-migrate: true
     clean-disabled: false
