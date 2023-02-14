@@ -41,16 +41,16 @@ public class MessageController {
 //    }
 
     @RequestMapping("/test")
-    public String test(Model model,OAuth2AuthenticationToken authenticationToken) {
+    public String test(Model model, OAuth2AuthenticationToken authenticationToken) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.isAuthenticated()) {
-            model.addAttribute("client",
-                    clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email"))); }
-        else {
+        if (!auth.isAuthenticated() ||
+                clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email")) == null) {
             clientService.createNewOAuthClient(authenticationToken);
         }
-            model.addAttribute("messages", messageService.getMessages());
-            model.addAttribute("message", new Message());
+        model.addAttribute("client",
+                clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email")));
+        model.addAttribute("messages", messageService.getMessages());
+        model.addAttribute("message", new Message());
 
         return "main";
     }
@@ -66,7 +66,7 @@ public class MessageController {
                              HttpServletRequest request) {
         message.setClient(clientRepository.findClientByEmail(authenticationToken.getPrincipal().getAttribute("email")));
         if (!message.getTwit().isEmpty()) {
-            if (request.getParameter("anonymous")!=null) {
+            if (request.getParameter("anonymous") != null) {
                 message.setClient(clientRepository.findClientByEmail("anonymous"));
             }
             messageService.addMessage(message);
