@@ -21,7 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "client", schema = "social_network")
+@Table(name = "client")
 public class Client implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
