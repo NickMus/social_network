@@ -1,5 +1,5 @@
-drop table message;
-drop table client;
+drop table message cascade ;
+drop table client cascade ;
 create table if not exists "message"
 (
     "id"   bigserial primary key,
