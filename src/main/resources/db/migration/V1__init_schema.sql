@@ -1,4 +1,6 @@
-create table "message"
+drop table message;
+drop table client;
+create table if not exists "message"
 (
     "id"   bigserial primary key,
     "twit" char(50) not null,
@@ -6,7 +8,7 @@ create table "message"
     "time" char(50) not null
 );
 
-create table client
+create table if not exists client
 (
     "id"          bigserial primary key,
     "name"        char(50)  not null,
@@ -19,7 +21,7 @@ create table client
     constraint fk_message foreign key (message_id) references "message" ("id")
 );
 
-create index client_tbl_role_id_idx on client
+create index if not exists client_tbl_role_id_idx on client
     (message_id);
 
 insert into client(id,name,second_name,avatar,email,role)
